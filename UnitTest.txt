@@ -1,0 +1,47 @@
+import static org.junit.Assert.*;
+import org.junit.Test;
+import static org.junit.Test.*;
+
+public class UnitTest {
+	private static String BASEDIR = "C:\\Users\\Kevin Wilson\\eclipse-workspace\\Entry\\src";
+	@Test
+	public void oneArg() {
+		String[] args = {BASEDIR};
+		assertEquals(0,Entry.EntryRun(args));
+	}
+	@Test
+	public void twoArgString() {
+		String[] args = {BASEDIR,"java.lang.String"};
+		assertEquals(1,Entry.EntryRun(args));
+	}
+	@Test
+	public void twoArgEntry() {
+		String[] args = {BASEDIR, "Entry"};
+		assertEquals(1,Entry.EntryRun(args));
+	}
+	@Test
+	public void twoArgBckSlsh() {
+		String[] args = {BASEDIR+"\\", "Entry"};
+		assertEquals(1,Entry.EntryRun(args));
+	}
+	@Test
+	public void twoArgMain() {
+		String[] args = {BASEDIR+"\\", "Entry"};
+		Entry.main(args);
+	}
+	@Test
+	public void threeArg() {
+		String[] args = {BASEDIR,"java.lang.String","test"};
+		assertEquals(0,Entry.EntryRun(args));
+	}
+	@Test
+	public void badDir() {
+		String[] args = {"Q", "java.lang.String"};
+		assertEquals(0,Entry.EntryRun(args));
+	}
+	@Test
+	public void countFileError() {
+		int[] counter = {0,0};
+		assertNotNull(Entry.count("Entry",BASEDIR+"abc","Entry",counter));
+	}
+}
